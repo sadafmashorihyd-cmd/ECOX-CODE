@@ -2,13 +2,18 @@ import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
+import sys
 import tensorflow as tf
 import numpy as np
 import cv2
 from tensorflow.keras.applications.efficientnet import preprocess_input
 
-MODEL_PATH   = 'models/ecox_final_best.h5'
-OUTPUT_PATH  = 'ecox_model_edge.tflite'
+# ── Constants se model path lo (Single Source of Truth — Principle #2) ──
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from src.utils.constants import CONFIG
+
+MODEL_PATH   = CONFIG['MODEL_PATH']
+OUTPUT_PATH  = 'models/ecox_model_edge.tflite'
 DATASET_PATH = 'dataset'
 
 
@@ -19,6 +24,7 @@ def convert_to_edge():
 
     if not os.path.exists(MODEL_PATH):
         print(f"❌ Model not found: {MODEL_PATH}")
+        print(f"   Expected: {MODEL_PATH}")
         return
 
     print(f"\n   Loading: {MODEL_PATH}")
@@ -60,8 +66,7 @@ def convert_to_edge():
         print(f"   Status: ⚠️ Consider more pruning")
 
     print(f"\n{'='*55}")
-    print(f"✅ P11 FIXED: Correct model loaded!")
-    print(f"✅ P12 FIXED: EfficientNet preprocessing!")
+    print(f"✅ Model: {os.path.basename(MODEL_PATH)}")
     print(f"✅ Edge model: {OUTPUT_PATH}")
     print(f"{'='*55}\n")
 

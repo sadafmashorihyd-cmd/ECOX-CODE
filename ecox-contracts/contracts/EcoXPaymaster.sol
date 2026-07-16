@@ -34,7 +34,7 @@ contract EcoXPaymaster {
     // Authorized function selectors (only these can be gas-sponsored)
     // mintFromAI(address,uint256,bytes32)
     bytes4 public constant MINT_FROM_AI_SELECTOR =
-        bytes4(keccak256("mintFromAI(address,uint256,bytes32)"));
+        bytes4(keccak256("mintFromAI(address,uint256,bytes32,uint256)"));
 
     // approveMint(address,uint256,bytes32)
     bytes4 public constant APPROVE_MINT_SELECTOR =

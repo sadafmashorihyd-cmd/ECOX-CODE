@@ -1,11 +1,3 @@
-tensorflow-cpu
-torch
-torchvision
-onnxruntime
-opencv-python-headless==4.9.0.80
-numpy<2.0.0
-Pillow==10.4.0
-easyocr==1.7.1
 flask==3.0.0
 flask-cors==4.0.0
 web3==6.15.1
@@ -13,4 +5,22 @@ requests==2.31.0
 python-dotenv==1.0.0
 gunicorn==21.2.0
 cryptography==41.0.0
-pysha3==1.0.2
+opencv-python-headless==4.9.0.80
+Pillow==10.4.0
+numpy<2.0.0
+ImageHash==4.3.1
+onnxruntime
+
+# ⚠️ RESEARCH-ONLY: torch/torchvision NAHI use hote production app.py mein.
+# Sirf dev-tools/dual_framework_config.py (diagnostic-test) ke liye hain.
+# Agar future mein PyTorch-based feature add nahi karna, yeh 2 lines hata sakte ho
+# taake deployment-size/time kam ho.
+--index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+
+# Explicitly forcing CPU-only AI frameworks
+--extra-index-url https://pypi.org/simple
+tensorflow-cpu
+easyocr
+qrcode==7.4.2

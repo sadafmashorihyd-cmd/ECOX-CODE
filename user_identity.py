@@ -34,7 +34,7 @@ def generate_identity_hash(name, secret_pin):
 
 
 def generate_recovery_phrase(identity_hash, num_words=12):
-    """✅ No duplicate words — BIP-39 style"""
+    """BIP-39 style — no duplicate words"""
     hash_bytes = bytes.fromhex(identity_hash)
     used_words = set()
     words      = []
@@ -57,13 +57,17 @@ def verify_recovery_phrase(phrase, identity_hash):
 
 
 def create_identity(name, secret_pin):
+    """
+    Naya GaiaVolt identity banao.
+    ✅ Day 11: Recovery phrase prominently dikhao — 'Save this safely' warning.
+    """
     print(f"\n{'='*55}")
-    print(f"🔐 ECOX IDENTITY CREATION")
+    print(f"GAIAVOLT IDENTITY CREATION")
     print(f"{'='*55}")
 
     if os.path.exists(IDENTITY_FILE):
-        print(f"⚠️  Identity already exists!")
-        print(f"   Use restore_identity() instead")
+        print(f"Identity already exists!")
+        print(f"Use restore_identity() instead")
         return None
 
     identity_hash   = generate_identity_hash(name, secret_pin)
@@ -73,57 +77,62 @@ def create_identity(name, secret_pin):
         "name":          name,
         "identity_hash": identity_hash,
         "created_at":    datetime.now(timezone.utc).isoformat(),
-        "version":       "EcoX-1.0"
+        "version":       "GaiaVolt-1.0"
     }
 
+    # ✅ FIXED: syntax error (json.dump ke baad seedha print tha)
     with open(IDENTITY_FILE, 'w') as f:
         json.dump(identity, f, indent=4)
 
-    print(f"\n   ✅ Identity created!")
+    print(f"\n   Identity created!")
     print(f"   Name: {name}")
     print(f"   Hash: {identity_hash[:16]}...")
     print(f"\n   {'='*45}")
-    print(f"   🔑 RECOVERY PHRASE — SAVE THIS SAFELY!")
+    print(f"   RECOVERY PHRASE — SAVE THIS SAFELY!")
     print(f"   {'='*45}")
     print(f"\n   {recovery_phrase}\n")
     print(f"   {'='*45}")
-    print(f"   ⚠️  Write this down — never share!")
+    print(f"   WARNING: Write this down — never share!")
+    print(f"   This is your ONLY way to restore account.")
+    print(f"   No email. No password. Just this phrase.")
     print(f"{'='*55}\n")
 
     return identity_hash, recovery_phrase
 
 
 def restore_identity(recovery_phrase, name, secret_pin):
+    """Recovery phrase se identity restore karo"""
     print(f"\n{'='*55}")
-    print(f"🔄 ECOX IDENTITY RESTORE")
+    print(f"GAIAVOLT IDENTITY RESTORE")
     print(f"{'='*55}")
 
     identity_hash = generate_identity_hash(name, secret_pin)
     is_valid      = verify_recovery_phrase(recovery_phrase, identity_hash)
 
     if not is_valid:
-        print(f"   ❌ Invalid recovery phrase!")
+        print(f"   Invalid recovery phrase!")
         return False
 
-    print(f"   ✅ Recovery phrase verified!")
+    print(f"   Recovery phrase verified!")
     print(f"   Hash: {identity_hash[:16]}...")
 
     identity = {
         "name":          name,
         "identity_hash": identity_hash,
         "restored_at":   datetime.now(timezone.utc).isoformat(),
-        "version":       "EcoX-1.0"
+        "version":       "GaiaVolt-1.0"
     }
 
     with open(IDENTITY_FILE, 'w') as f:
         json.dump(identity, f, indent=4)
 
-    print(f"   ✅ Identity restored!")
+    print(f"   Identity restored!")
     print(f"{'='*55}\n")
     return True
 
 
 def load_identity():
+    """Current identity load karo"""
     if not os.path.exists(IDENTITY_FILE):
         return None
     with open(IDENTITY_FILE, 'r') as f:
@@ -131,6 +140,7 @@ def load_identity():
 
 
 def verify_identity(name, secret_pin):
+    """Identity verify karo"""
     identity = load_identity()
     if not identity:
         return False, "No identity found!"
@@ -141,12 +151,12 @@ def verify_identity(name, secret_pin):
     if not hmac.compare_digest(current_hash, stored_hash):
         return False, "Identity mismatch!"
 
-    return True, f"✅ Identity verified: {identity['name']}"
+    return True, f"Identity verified: {identity['name']}"
 
 
 if __name__ == "__main__":
     print(f"\n{'='*55}")
-    print(f"🔐 DAY 11 — IDENTITY SYSTEM TEST")
+    print(f"DAY 11 — GAIAVOLT IDENTITY SYSTEM TEST")
     print(f"{'='*55}")
 
     if os.path.exists(IDENTITY_FILE):
@@ -156,10 +166,9 @@ if __name__ == "__main__":
     result = create_identity("Sadaf", "1234")
     if result:
         identity_hash, phrase = result
-        # Verify no duplicates
         words = phrase.split()
         assert len(words) == len(set(words)), "Duplicate words found!"
-        print(f"   No duplicates: ✅")
+        print(f"   No duplicates: OK")
 
     print("\nTest 2: Verify identity")
     ok, msg = verify_identity("Sadaf", "1234")
@@ -167,13 +176,13 @@ if __name__ == "__main__":
 
     print("\nTest 3: Wrong PIN")
     ok, msg = verify_identity("Sadaf", "9999")
-    print(f"   Result: {'✅ Blocked!' if not ok else '❌ Should block!'}")
+    print(f"   Result: {'Blocked!' if not ok else 'Should block!'}")
 
     print("\nTest 4: Restore from phrase")
     if os.path.exists(IDENTITY_FILE):
         os.remove(IDENTITY_FILE)
     restored = restore_identity(phrase, "Sadaf", "1234")
-    print(f"   Restored: {'✅' if restored else '❌'}")
+    print(f"   Restored: {'OK' if restored else 'FAILED'}")
 
     print("\nTest 5: Verify after restore")
     ok, msg = verify_identity("Sadaf", "1234")
@@ -181,13 +190,11 @@ if __name__ == "__main__":
 
     print("\nTest 6: Wrong phrase")
     ok2 = restore_identity("wrong words here test fail check now", "Sadaf", "1234")
-    print(f"   Wrong phrase: {'✅ Blocked!' if not ok2 else '❌'}")
+    print(f"   Wrong phrase: {'Blocked!' if not ok2 else 'FAILED'}")
 
     if os.path.exists(IDENTITY_FILE):
         os.remove(IDENTITY_FILE)
 
     print(f"\n{'='*55}")
-    print(f"✅ P26 FIXED: Device independent identity!")
-    print(f"✅ P27 FIXED: No duplicate words!")
-    print(f"✅ P28 FIXED: Cross-device restore!")
+    print(f"Day 11 Complete: GaiaVolt Identity System ready!")
     print(f"{'='*55}\n")

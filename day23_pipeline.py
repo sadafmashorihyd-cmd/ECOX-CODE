@@ -190,8 +190,8 @@ async def run_full_pipeline(
     print(f"  Activity   : {ai_result['activity_type']}")
     print(f"  Confidence : {ai_result['confidence_bps']} BPS (real from AI)")
 
-    from day21_orchestrator import Day21Engine, ReceiptStatus
-    from day21_web3_bridge import Web3Bridge
+    from reward_orchestrator import Day21Engine, ReceiptStatus
+    from reward_web3_bridge import Web3Bridge
 
     # Override Web3Bridge to pass real confidence score
     class RealWeb3Bridge(Web3Bridge):
@@ -253,7 +253,7 @@ async def run_full_pipeline(
     engine       = Day21Engine.__new__(Day21Engine)
     engine.web3  = RealWeb3Bridge(ai_result["confidence_bps"])
     engine.web3.start_background_ping()
-    from day21_orchestrator import RollbackLog
+    from reward_orchestrator import RollbackLog
     engine.rollback = RollbackLog()
 
     # Execute with real data

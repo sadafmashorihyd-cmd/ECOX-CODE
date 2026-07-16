@@ -2,7 +2,7 @@ import os
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
-load_dotenv()m
+load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 KEY_PATH = os.path.join(BASE_DIR, "secret.key")

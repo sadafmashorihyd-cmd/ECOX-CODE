@@ -161,3 +161,12 @@
 2026-06-09 11:24:36,580 | REJECTED | N/A | N/A | Duplicate video — cannot reuse! | {'spatial': 'pass', 'liveness': 'pass', 'ai': 'pass', 'ocr': 'fail', 'zk': 'pending'}
 2026-06-09 11:24:55,701 | REJECTED | N/A | N/A | Low confidence (14.2%) | {'spatial': 'pass', 'liveness': 'pass', 'ai': 'fail', 'ocr': 'pending', 'zk': 'pending'}
 2026-06-09 16:54:29,418 | REJECTED | N/A | N/A | No EXIF data — downloaded or screenshot image rejected. Take a fresh photo with your camera. | {'spatial': 'pass', 'liveness': 'fail', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-07 20:53:24,974 | REJECTED | N/A | N/A | GPS teleportation detected — impossible velocity! | {'spatial': 'fail', 'liveness': 'pending', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-07 20:54:03,121 | REJECTED | N/A | N/A | Low confidence (52.4%) — min 90% required. | {'spatial': 'pass', 'liveness': 'pass', 'ai': 'fail', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-08 15:33:22,219 | REJECTED | N/A | N/A | GPS teleportation detected — impossible velocity! | {'spatial': 'fail', 'liveness': 'pending', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-08 15:38:50,159 | REJECTED | N/A | N/A | Duplicate image! SHA-256 exact match | {'spatial': 'fail', 'liveness': 'fail', 'ai': 'fail', 'ocr': 'fail', 'zk': 'fail'}
+2026-07-08 15:39:06,326 | REJECTED | N/A | N/A | Duplicate image! SHA-256 exact match | {'spatial': 'fail', 'liveness': 'fail', 'ai': 'fail', 'ocr': 'fail', 'zk': 'fail'}
+2026-07-08 21:21:53,258 | REJECTED | N/A | N/A | No EXIF data — downloaded or screenshot image rejected. Take a fresh photo with your camera. | {'spatial': 'pass', 'liveness': 'fail', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-09 12:40:54,861 | REJECTED | N/A | N/A | No EXIF data — downloaded or screenshot image rejected. Take a fresh photo with your camera. | {'spatial': 'pass', 'liveness': 'fail', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-09 15:45:48,332 | REJECTED | N/A | N/A | Low confidence (51.7%) — min 90% required. | {'spatial': 'pass', 'liveness': 'pass', 'ai': 'fail', 'ocr': 'pending', 'zk': 'pending'}
+2026-07-11 18:27:14,778 | REJECTED | N/A | N/A | No EXIF data — downloaded or screenshot image rejected. Take a fresh photo with your camera. | {'spatial': 'pass', 'liveness': 'fail', 'ai': 'pending', 'ocr': 'pending', 'zk': 'pending'}

@@ -1,12 +1,14 @@
 {
-    "name": "GaiaVolt \u2014 Proof of Planet",
+    "name": "GaiaVolt — Proof of Planet",
     "short_name": "GaiaVolt",
     "description": "Verify eco actions, earn GAIA coins, save the planet!",
     "start_url": "/",
+    "scope": "/",
     "display": "standalone",
     "background_color": "#030b03",
     "theme_color": "#22c55e",
-    "orientation": "portrait",
+    "orientation": "portrait-primary",
+    "lang": "en",
     "icons": [
         {
             "src": "/icon-192.png",
@@ -23,24 +25,31 @@
     ],
     "shortcuts": [
         {
-            "name": "Verify Activity",
+            "name": "Verify & Earn",
             "url": "/verify",
-            "description": "Verify your eco action"
+            "description": "Verify your eco action and earn GAIA coins"
         },
         {
-            "name": "My Journey",
+            "name": "My Evolution",
             "url": "/evolution",
-            "description": "View your GaiaVolt journey"
+            "description": "View your GaiaVolt journey and level"
         },
         {
-            "name": "GaiaVolt Store",
-            "url": "/bridges",
-            "description": "Redeem GAIA coins for rewards"
+            "name": "Legacy Vault 2050",
+            "url": "/vault",
+            "description": "Your 2050 time capsule"
+        },
+        {
+            "name": "Living NFTs",
+            "url": "/nfts",
+            "description": "Your evolving NFT collection"
         }
     ],
     "categories": [
         "environment",
         "lifestyle",
         "utilities"
-    ]
+    ],
+    "screenshots": [],
+    "prefer_related_applications": false
 }

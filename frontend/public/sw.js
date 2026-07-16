@@ -6,6 +6,7 @@ const STATIC_ASSETS = [
     '/evolution',
     '/bridges',
     '/nfts',
+    '/vault',
 ];
 
 self.addEventListener('install', (e) => {
@@ -25,12 +26,25 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+    // API calls skip karo — offline mode mein cache nahi hongi
+    if (
+        e.request.method !== 'GET' ||
+        e.request.url.includes('/api/') ||
+        e.request.url.includes('hf.space') ||
+        e.request.url.includes('127.0.0.1:8000') ||
+        e.request.url.includes('chrome-extension')
+    ) {
+        return;
+    }
+
     // Network first, cache fallback
     e.respondWith(
         fetch(e.request)
             .then(res => {
-                const clone = res.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+                if (res && res.status === 200) {
+                    const clone = res.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+                }
                 return res;
             })
             .catch(() => caches.match(e.request))

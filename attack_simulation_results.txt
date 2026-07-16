@@ -1,0 +1,46 @@
+GaiaVolt Attack Simulation Results
+=======================================================
+
+{
+  "timestamp": "2026-07-05T19:35:42.572433+00:00",
+  "total": 5,
+  "detected": 4,
+  "missed": 1,
+  "results": [
+    {
+      "test": "GPS Spoofing",
+      "status": "DETECTED",
+      "reason": "Teleportation detected \u2014 impossible velocity",
+      "details": "Karachi \u2192 London in 0 seconds = BLOCKED",
+      "timestamp": "2026-07-05T19:35:38.225301+00:00"
+    },
+    {
+      "test": "Screen Screenshot",
+      "status": "DETECTED",
+      "reason": "Screen/fake image detected by spoof detector",
+      "details": "5-layer check: voted SPOOF",
+      "timestamp": "2026-07-05T19:35:38.567129+00:00"
+    },
+    {
+      "test": "Duplicate Image",
+      "status": "DETECTED",
+      "reason": "Duplicate hash detected on second submission",
+      "details": "Method: User banned!",
+      "timestamp": "2026-07-05T19:35:42.447194+00:00"
+    },
+    {
+      "test": "Tampered Image",
+      "status": "MISSED",
+      "reason": "Tampered image passed \u2014 ELA threshold may need tuning",
+      "details": "Minor tampering may require lower ELA threshold",
+      "timestamp": "2026-07-05T19:35:42.513596+00:00"
+    },
+    {
+      "test": "Replay Attack",
+      "status": "DETECTED",
+      "reason": "Replay detected \u2014 proof already used",
+      "details": "Hash 37a4061b7618b78a... already in fingerprint DB",
+      "timestamp": "2026-07-05T19:35:42.568151+00:00"
+    }
+  ]
+}

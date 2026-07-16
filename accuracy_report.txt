@@ -1,0 +1,5 @@
+GaiaVolt Model Evaluation Report
+========================================
+Model: D:\Gaia Volt\models\ecox_final_best.h5
+Val samples: 238
+Overall Accuracy: 79.83%

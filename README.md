@@ -1,3 +1,11 @@
+---
+title: GaiaVolt
+emoji: 🌍
+colorFrom: green
+colorTo: blue
+sdk: docker
+pinned: false
+---
 # 🌍 GaiaVolt — Proof of Planet
 
 > *"People built apps for social media. We built an app for the Planet."*

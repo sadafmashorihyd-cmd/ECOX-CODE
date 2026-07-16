@@ -16,7 +16,6 @@ interface IZkVerifier {
     ) external view returns (bool);
 }
 
-// QuantumLock interface
 interface IQuantumLock {
     function recordContribution(
         address user,
@@ -45,16 +44,16 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
     uint256 public constant MAX_PER_MINT       = 50_000 * 10**18;
     uint256 public constant APPROVAL_TIMEOUT   = 1 hours;
     uint256 public constant REQUIRED_APPROVALS = 2;
+    uint256 public constant MAX_MINTS_PER_DAY  = 10;
+    uint256 public constant DAY_IN_SECONDS     = 86400;
+    uint256 public constant MIN_CONFIDENCE_BPS = 9000;
+    uint256 public constant MULTISIG_THRESHOLD = 2;
 
-    uint256 public constant MAX_MINTS_PER_DAY = 10;
-    uint256 public constant DAY_IN_SECONDS    = 86400;
     mapping(address => mapping(uint256 => uint256)) private _dailyMintCount;
 
-    uint256 public constant MIN_CONFIDENCE_BPS = 9000;
     uint256 public minConfidenceBps = MIN_CONFIDENCE_BPS;
     mapping(bytes32 => uint256) public actionConfidenceScore;
 
-    uint256 public constant MULTISIG_THRESHOLD = 2;
     struct GovernanceAction {
         bytes32 actionHash;
         uint256 approvalCount;
@@ -64,7 +63,7 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
     }
     mapping(bytes32 => GovernanceAction) private _governanceActions;
 
-    mapping(address => bool)    public authorizedOracles;
+    mapping(address => bool) public authorizedOracles;
     uint256 public oracleCount;
 
     // QuantumLock 2050 connection
@@ -104,7 +103,6 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
         Ownable(initialOwner)
     {}
 
-    // Set QuantumLock address
     function setQuantumLock(address _quantumLock) external onlyOwner {
         if (_quantumLock == address(0)) revert ZeroAddressForbidden();
         address old = quantumLockAddress;
@@ -112,7 +110,6 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
         emit QuantumLockUpdated(old, _quantumLock);
     }
 
-    // Internal: send 1% to QuantumLock
     function _sendToQuantumLock(
         address recipient,
         uint256 mintAmount,
@@ -120,14 +117,10 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
     ) internal {
         if (quantumLockAddress == address(0)) return;
         try IQuantumLock(quantumLockAddress).recordContribution(
-            recipient,
-            mintAmount,
-            co2NanoGrams
+            recipient, mintAmount, co2NanoGrams
         ) {
             emit ContributionSentToQuantumLock(recipient, mintAmount, co2NanoGrams);
-        } catch {
-            // Never block minting if QuantumLock fails
-        }
+        } catch {}
     }
 
     function addOracle(address oracle) external onlyOwner {
@@ -196,9 +189,8 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
     }
 
     function _checkConfidence(bytes32 actionId, uint256 confidenceBps) internal {
-        if (confidenceBps < minConfidenceBps) {
+        if (confidenceBps < minConfidenceBps)
             revert ConfidenceScoreTooLow(confidenceBps, minConfidenceBps);
-        }
         actionConfidenceScore[actionId] = confidenceBps;
     }
 
@@ -219,9 +211,8 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
             _approvalExpiry[actionId] = 0;
             emit ApprovalExpired(actionId);
         }
-        if (_mintApprovals[actionId] == 0) {
+        if (_mintApprovals[actionId] == 0)
             _approvalExpiry[actionId] = block.timestamp + APPROVAL_TIMEOUT;
-        }
 
         _hasApproved[actionId][msg.sender] = true;
         _mintApprovals[actionId]++;
@@ -255,8 +246,7 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
         _processedImageHashes[actionId] = true;
         _mint(recipient, amount);
 
-        // Send 1% contribution to QuantumLock 2050
-        uint256 co2Nano = amount / 1000; // proportional CO2
+        uint256 co2Nano = amount / 1000;
         _sendToQuantumLock(recipient, amount, co2Nano);
 
         emit EcoRewardMinted(recipient, amount, actionId, confidenceBps);
@@ -330,6 +320,6 @@ contract EcoCoin is ERC20, ERC20Burnable, Ownable2Step, ReentrancyGuard, Pausabl
         uint256 burnAmount = (value * BURN_TAX_BPS) / BPS_DENOMINATOR;
         uint256 sendAmount = value - burnAmount;
         _burn(from, burnAmount);
-        super._update(from, to, sendAmount);a
+        super._update(from, to, sendAmount);
     }
 }

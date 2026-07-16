@@ -1,0 +1,95 @@
+GaiaVolt Dataset Audit Report
+======================================================================
+
+{
+  "augmented": {
+    "found_classes": {
+      "cycling": 300,
+      "electric_cars": 300,
+      "led_lighting": 300,
+      "ocean_cleanup": 294,
+      "organic_farming": 296,
+      "plantation": 300,
+      "public_transport": 298,
+      "recycling": 300,
+      "solar_panels": 300,
+      "utility_bills": 260,
+      "water_conservation": 300,
+      "wind_energy": 298
+    },
+    "unexpected_folders": [],
+    "missing_classes": []
+  },
+  "train": {
+    "found_classes": {
+      "cycling": 285,
+      "electric_cars": 411,
+      "led_lighting": 192,
+      "ocean_cleanup": 208,
+      "organic_farming": 220,
+      "plantation": 180,
+      "public_transport": 271,
+      "recycling": 180,
+      "solar_panels": 398,
+      "utility_bills": 149,
+      "water_conservation": 273,
+      "wind_energy": 214
+    },
+    "unexpected_folders": [],
+    "missing_classes": []
+  },
+  "train_balanced": {
+    "found_classes": {
+      "cycling": 150,
+      "electric_cars": 150,
+      "led_lighting": 150,
+      "ocean_cleanup": 150,
+      "organic_farming": 150,
+      "plantation": 150,
+      "public_transport": 150,
+      "recycling": 150,
+      "solar_panels": 150,
+      "utility_bills": 149,
+      "water_conservation": 150,
+      "wind_energy": 150
+    },
+    "unexpected_folders": [],
+    "missing_classes": []
+  },
+  "uploads": {
+    "found_classes": {},
+    "unexpected_folders": [],
+    "missing_classes": [
+      "cycling",
+      "electric_cars",
+      "led_lighting",
+      "ocean_cleanup",
+      "organic_farming",
+      "plantation",
+      "public_transport",
+      "recycling",
+      "solar_panels",
+      "utility_bills",
+      "water_conservation",
+      "wind_energy"
+    ]
+  },
+  "val": {
+    "found_classes": {
+      "cycling": 20,
+      "electric_cars": 20,
+      "led_lighting": 20,
+      "ocean_cleanup": 20,
+      "organic_farming": 20,
+      "plantation": 20,
+      "public_transport": 20,
+      "recycling": 20,
+      "solar_panels": 20,
+      "utility_bills": 19,
+      "water_conservation": 20,
+      "wind_energy": 19
+    },
+    "unexpected_folders": [],
+    "missing_classes": []
+  }
+}

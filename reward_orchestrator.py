@@ -20,8 +20,8 @@ from eth_account import Account
 from eth_account.messages import encode_defunct
 from dotenv import load_dotenv
 
-from day21_impact_engine import ProofMetadata, run_impact_engine, generate_impact_message
-from day21_web3_bridge import Web3Bridge
+from carbon_impact_engine import ProofMetadata, run_impact_engine, generate_impact_message
+from reward_web3_bridge import Web3Bridge
 
 load_dotenv()
 

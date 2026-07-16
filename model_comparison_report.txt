@@ -1,0 +1,207 @@
+GaiaVolt Model Comparison Report
+================================================================================
+
+{
+  "model_path": "./ecox_best.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 7.56,
+  "avg_confidence": 89.33,
+  "num_classes_output": 13,
+  "load_time_sec": 3.75,
+  "predict_time_sec": 27.11,
+  "file_size_mb": 23.78
+}
+
+{
+  "model_path": "./ecox_model.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 10.5,
+  "avg_confidence": 98.35,
+  "num_classes_output": 10,
+  "load_time_sec": 1.2,
+  "predict_time_sec": 2.86,
+  "file_size_mb": 192.55
+}
+
+{
+  "model_path": "./ecox_model_b7_v1.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 12.18,
+  "avg_confidence": 30.99,
+  "num_classes_output": 13,
+  "load_time_sec": 2.47,
+  "predict_time_sec": 23.33,
+  "file_size_mb": 19.7
+}
+
+{
+  "model_path": "./ecox_model_final.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 11.34,
+  "avg_confidence": 88.92,
+  "num_classes_output": 13,
+  "load_time_sec": 2.59,
+  "predict_time_sec": 22.84,
+  "file_size_mb": 23.78
+}
+
+{
+  "model_path": "./ecox_model_pruned.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 14.71,
+  "avg_confidence": 96.06,
+  "num_classes_output": 10,
+  "load_time_sec": 1.18,
+  "predict_time_sec": 2.86,
+  "file_size_mb": 192.55
+}
+
+{
+  "model_path": "./ecox_model_stable.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 7.98,
+  "avg_confidence": 14.77,
+  "num_classes_output": 13,
+  "load_time_sec": 2.38,
+  "predict_time_sec": 23.52,
+  "file_size_mb": 16.54
+}
+
+{
+  "model_path": "ecox_best.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 7.56,
+  "avg_confidence": 89.33,
+  "num_classes_output": 13,
+  "load_time_sec": 2.3,
+  "predict_time_sec": 22.43,
+  "file_size_mb": 23.78
+}
+
+{
+  "model_path": "ecox_model.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 10.5,
+  "avg_confidence": 98.35,
+  "num_classes_output": 10,
+  "load_time_sec": 0.67,
+  "predict_time_sec": 2.92,
+  "file_size_mb": 192.55
+}
+
+{
+  "model_path": "ecox_model_b7_v1.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 12.18,
+  "avg_confidence": 30.99,
+  "num_classes_output": 13,
+  "load_time_sec": 2.15,
+  "predict_time_sec": 22.74,
+  "file_size_mb": 19.7
+}
+
+{
+  "model_path": "ecox_model_final.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 11.34,
+  "avg_confidence": 88.92,
+  "num_classes_output": 13,
+  "load_time_sec": 2.43,
+  "predict_time_sec": 22.38,
+  "file_size_mb": 23.78
+}
+
+{
+  "model_path": "ecox_model_pruned.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 14.71,
+  "avg_confidence": 96.06,
+  "num_classes_output": 10,
+  "load_time_sec": 0.68,
+  "predict_time_sec": 2.91,
+  "file_size_mb": 192.55
+}
+
+{
+  "model_path": "ecox_model_stable.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 7.98,
+  "avg_confidence": 14.77,
+  "num_classes_output": 13,
+  "load_time_sec": 2.2,
+  "predict_time_sec": 23.87,
+  "file_size_mb": 16.54
+}
+
+{
+  "model_path": "models/ecox_base_model.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 7.14,
+  "avg_confidence": 13.55,
+  "num_classes_output": 12,
+  "load_time_sec": 2.71,
+  "predict_time_sec": 25.75,
+  "file_size_mb": 18.95
+}
+
+{
+  "model_path": "models/ecox_final_best.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 83.19,
+  "avg_confidence": 87.62,
+  "num_classes_output": 12,
+  "load_time_sec": 2.67,
+  "predict_time_sec": 22.75,
+  "file_size_mb": 35.59
+}
+
+{
+  "model_path": "models/ecox_model_final.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 83.19,
+  "avg_confidence": 87.62,
+  "num_classes_output": 12,
+  "load_time_sec": 2.53,
+  "predict_time_sec": 22.63,
+  "file_size_mb": 35.59
+}
+
+{
+  "model_path": "models/ecox_model_pruned.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 83.19,
+  "avg_confidence": 87.65,
+  "num_classes_output": 12,
+  "load_time_sec": 2.58,
+  "predict_time_sec": 23.56,
+  "file_size_mb": 19.19
+}
+
+{
+  "model_path": "models/ecox_phase1_best.h5",
+  "load_success": true,
+  "error": null,
+  "accuracy": 81.09,
+  "avg_confidence": 76.47,
+  "num_classes_output": 12,
+  "load_time_sec": 2.6,
+  "predict_time_sec": 22.92,
+  "file_size_mb": 25.27
+}
+
