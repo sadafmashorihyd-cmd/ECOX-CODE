@@ -626,6 +626,8 @@ export default function VerifyPage() {
   const mediaRecRef = useRef();
   const streamRef = useRef();
   const timerRef = useRef();
+  const inputRef = useRef();
+  const activityRef = useRef(null);
 
   useEffect(() => {
     const token = localStorage.getItem("gv_token");
