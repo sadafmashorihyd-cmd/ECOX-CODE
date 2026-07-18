@@ -1,12 +1,9 @@
-import type { NextConfig } from "next";
+=import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  output: 'standalone',
   allowedDevOrigins: ['192.168.100.219'],
 };
 
