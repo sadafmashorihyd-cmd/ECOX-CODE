@@ -1021,6 +1021,6 @@ export default function VerifyPage() {
           GPS · VIDEO PROOF · AI · ZK-SNARKS · POLYGON
         </div>
       </div>
-    </div>
+    </div> 
   );
-}
+} 
